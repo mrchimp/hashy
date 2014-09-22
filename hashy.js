@@ -10,10 +10,16 @@ var hashy = function(link_sel, offset_sel) {
   var offset_elem = $(offset_sel);
 
   function scrollToHash(hash) {
+    var offset_height = 0;
+
+    offset_elem.each(function () {
+      offset_height += $(this).height();
+    });
+
     $target = $(hash);
 
     $('html, body').stop().animate({
-      'scrollTop': $target.offset().top - offset_elem.height()
+      'scrollTop': $target.offset().top - offset_height
     }, 400, 'swing', function () {
       window.location.hash = hash;
     });
