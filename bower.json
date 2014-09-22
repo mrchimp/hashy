@@ -1,0 +1,21 @@
+{
+  "name": "hashy",
+  "main": "hashy.min.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mrchimp/hashy",
+  "authors": [
+    "mrchimp <chimpytk@gmail.com>"
+  ],
+  "description": "Make hash links nice.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*"
+  }
+}
