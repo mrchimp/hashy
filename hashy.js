@@ -5,7 +5,7 @@
  * Offset by height of fixed menu.
  * @param {String} offset [Selector for nav element]
  */
-var hashy = function(offset_sel) {
+var hashy = function(link_sel, offset_sel) {
 
   var offset_elem = $(offset_sel);
 
@@ -20,7 +20,7 @@ var hashy = function(offset_sel) {
   }
 
   // Smooth scroll hash links
-  $('a[href^="#"]').on('click', function (e) {
+  $(link_sel).on('click', function (e) {
     e.preventDefault();
     scrollToHash(this.hash);
   });

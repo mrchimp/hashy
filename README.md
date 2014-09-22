@@ -6,7 +6,10 @@ Offset scroll amount by the height of a given element including on page load.
 
     <script src="hashy.js"></script>
     <script>
-        hashy('#my-fixed-header');
+        hashy('.smooth-scrolling-links', #fixed-header');
     </script>
 
 Marvelous.
+
+Relies on jQuery because I haven't made it not. Pull requests are accepted.
+
