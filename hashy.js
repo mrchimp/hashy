@@ -38,5 +38,4 @@ var hashy = function(link_sel, offset_sel) {
       }, 200);
     });
   }
-
 };
