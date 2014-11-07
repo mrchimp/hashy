@@ -18,11 +18,11 @@ var hashy = function(link_sel, offset_sel) {
     var offset_height = 0;
 
     if (!offset_elem.length) {
+      offset_height = 0;
+    } else {
       offset_elem.each(function () {
         offset_height += $(this).height();
       });
-    } else {
-      offset_height = 0;
     }
 
     $target = $(hash);
@@ -49,7 +49,7 @@ var hashy = function(link_sel, offset_sel) {
    */
   function setHash (hash) {
     if (history.pushState) {
-      history.pushState(null, null, '#' + hash);
+      history.pushState(null, null, hash);
     } else {
       location.hash = hash;
     }
