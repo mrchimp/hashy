@@ -32,7 +32,11 @@ var hashy = function(link_sel, offset_sel) {
   });
 
   if (window.location.hash) {
-    scrollToHash(window.location.hash);
+    $(window).load(function () {
+      window.setTimeout(function() {
+        scrollToHash(window.location.hash);
+      }, 200);
+    });
   }
 
 };
