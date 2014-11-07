@@ -12,4 +12,3 @@ Offset scroll amount by the height of a given element including on page load.
 Marvelous.
 
 Relies on jQuery because I haven't made it not. Pull requests are accepted.
-

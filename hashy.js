@@ -18,17 +18,21 @@ var hashy = function(link_sel, offset_sel) {
 
     $target = $(hash);
 
-    $('html, body').stop().animate({
-      'scrollTop': $target.offset().top - offset_height
-    }, 400, 'swing', function () {
-      window.location.hash = hash;
-    });
+    if ($target.length) {
+      $('html, body').stop().animate({
+        'scrollTop': $target.offset().top - offset_height
+      }, 400, 'swing', function () {
+        window.location.hash = hash;
+      });
+    }
   }
 
   // Smooth scroll hash links
   $(link_sel).on('click', function (e) {
-    e.preventDefault();
-    scrollToHash(this.hash);
+    if ($(this.hash).length) {
+      e.preventDefault();
+      scrollToHash(this.hash);
+    }
   });
 
   if (window.location.hash) {
