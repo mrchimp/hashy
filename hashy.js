@@ -7,7 +7,7 @@
  */
 var hashy = function(link_sel, offset_sel) {
 
-  var offset_elem = $(offset_sel);
+  var offset_elem = jQuery(offset_sel);
 
   /**
    * Scroll the window to a given hash
@@ -21,11 +21,11 @@ var hashy = function(link_sel, offset_sel) {
       offset_height = 0;
     } else {
       offset_elem.each(function () {
-        offset_height += $(this).height();
+        offset_height += jQuery(this).height();
       });
     }
 
-    $target = $(hash);
+    $target = jQuery(hash);
 
     if ($target.length) {
       scroll_dist = $target.offset().top - offset_height;
@@ -34,7 +34,7 @@ var hashy = function(link_sel, offset_sel) {
         window.scroll(0, scroll_dist);
         setHash(hash);
       } else {
-        $('html, body').stop().animate({
+        jQuery('html, body').stop().animate({
           'scrollTop': scroll_dist
         }, 400, 'swing', function () {
           setHash(hash);
@@ -56,8 +56,8 @@ var hashy = function(link_sel, offset_sel) {
   }
 
   // Smooth scroll hash links
-  $(link_sel).on('click', function (e) {
-    if ($(this.hash).length) {
+  jQuery(link_sel).on('click', function (e) {
+    if (jQuery(this.hash).length) {
       e.preventDefault();
       scrollToHash(this.hash, false);
     }
@@ -66,7 +66,7 @@ var hashy = function(link_sel, offset_sel) {
   // Scroll to hash on page load. The browser does this by 
   // default but this will compensate for sticky headers
   if (window.location.hash) {
-    $(window).load(function () {
+    jQuery(window).load(function () {
       window.setTimeout(function() {
         scrollToHash(window.location.hash, true);
       }, 200);
