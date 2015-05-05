@@ -3,24 +3,23 @@
  * Smooth scroll to hash links.
  * Scroll to hash links on load.
  * Offset by height of fixed menu.
- * @param {String} offset [Selector for nav element]
  */
-var hashy = function(link_sel, offset_sel) {
+var Hashy = {
 
-  var offset_elem = jQuery(offset_sel);
+  offset_elem: null,
 
   /**
    * Scroll the window to a given hash
-   * @param  {string}  hash  [The hash to scroll to, NOT including # symbol]
+   * @param  {string}  hash  [The hash to scroll to, including # symbol]
    * @param  {boolean} quick [If true, moves instantly - no smooth scroll]
    */
-  function scrollToHash(hash, quick) {
+  scrollToHash: function (hash, quick) {
     var offset_height = 0;
 
-    if (!offset_elem.length) {
+    if (!this.offset_elem.length) {
       offset_height = 0;
     } else {
-      offset_elem.each(function () {
+      this.offset_elem.each(function () {
         offset_height += jQuery(this).height();
       });
     }
@@ -32,44 +31,53 @@ var hashy = function(link_sel, offset_sel) {
 
       if (quick) {
         window.scroll(0, scroll_dist);
-        setHash(hash);
+        Hashy.setHash(hash);
       } else {
         jQuery('html, body').stop().animate({
           'scrollTop': scroll_dist
         }, 400, 'swing', function () {
-          setHash(hash);
+          Hashy.setHash(hash);
         });
       }
     }
-  }
+  },
 
   /**
    * Set the hash part of the URL without scrolling the window
-   * @param {string} hash [New hash to set, NOT including # symbol]
+   * @param {string} hash [New hash to set, including # symbol]
    */
-  function setHash (hash) {
+  setHash: function (hash) {
     if (history.pushState) {
       history.pushState(null, null, hash);
     } else {
       location.hash = hash;
     }
-  }
+  },
 
-  // Smooth scroll hash links
-  jQuery(link_sel).on('click', function (e) {
-    if (jQuery(this.hash).length) {
-      e.preventDefault();
-      scrollToHash(this.hash, false);
-    }
-  });
+  /**
+   * Initialise Hashy
+   * @param {String} link_sel   [Selector for hash link elements]
+   * @param {String} offset_sel [Selector for offset element]
+   */
+  init: function (link_sel, offset_sel) {
+    this.offset_elem = jQuery(offset_sel);
 
-  // Scroll to hash on page load. The browser does this by 
-  // default but this will compensate for sticky headers
-  if (window.location.hash) {
-    jQuery(window).load(function () {
-      window.setTimeout(function() {
-        scrollToHash(window.location.hash, true);
-      }, 200);
+    // Smooth scroll hash links
+    jQuery(link_sel).on('click', function (e) {
+      if (jQuery(this.hash).length) {
+        e.preventDefault();
+        Hashy.scrollToHash(this.hash, false);
+      }
     });
+
+    // Scroll to hash on page load. The browser does this by 
+    // default but this will compensate for sticky headers
+    if (window.location.hash) {
+      jQuery(window).load(function () {
+        window.setTimeout(function() {
+          Hashy.scrollToHash(window.location.hash, true);
+        }, 200);
+      });
+    }
   }
 };

@@ -1,5 +1,7 @@
+<!doctype html>
 <html>
 <head>
+	<meta charset='utf-8'>
 	<title>Hashy.js</title>
 	<style type="text/css">
 		body {
@@ -20,8 +22,10 @@
 			background-color: #666;
 		}
 	</style>
+
 </head>
 <body>
+	<a href="#" id="top"></a>
 	<nav class="navbar-1">This is a fixed navbar.</nav>
 	<nav class="navbar-2">This is a fixed navbar.</nav>
 	<p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
@@ -73,10 +77,36 @@
 	<p><a href="#link-6">Link 6 (not smooth)</a></p>
 	<h1 id="link-6">Test 6</h1>
 	<p>Life does not stop and start at your convenience, you miserable piece of shit. Rhoncus at volutpat felis blandit in libero turpis, laoreet et. I mean I had an M16, Jacko, not an Abrams fucking tank. Molestie sed, volutpat et erat nulla ut orci quis neque consectetur tincidunt. HERE'S WHAT HAPPENS, LARRY! Aliquam erat volutpat donec aliquam orci eget mi lobortis sed tincidunt diam mattis. …and even if he's a lazy man, and the Dude was certainly that—quite possibly the laziest in Los Angeles County. Fusce sem quam, ultricies sed convallis ac, hendrerit eu urna curabitur.</p>
+	<p>
+		<a href="#" class="scroll-to-test">Scroll to top</a>
+	</p>
+	<p>
+		<a href="#" class="set-a-hash">Set a hash</a>
+	</p>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script type="text/javascript" src="hashy.js"></script>
 	<script type="text/javascript">
-		hashy('.smooth-scroll', 'nav');
+		// Initialise hashy.
+		// This enables smooth scrolling on hash links and will scroll to a hash
+		// on load, if appropriate.
+		Hashy.init('.smooth-scroll', 'nav');
+
+
+		$('.scroll-to-test').on('click', function (e) {
+			e.preventDefault();
+
+			// Scroll to a given hash and update the address bar
+			Hashy.scrollToHash('#top');
+		});
+
+
+		$('.set-a-hash').on('click', function (e) {
+			e.preventDefault();
+
+			// Set the hash in the address bar.
+			// Doesn't scroll the page.
+			Hashy.setHash('#some-random-hash');
+		});
 	</script>
 </body>
 </html>

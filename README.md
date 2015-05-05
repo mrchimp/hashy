@@ -7,25 +7,27 @@ Offset scroll amount by the height of a given element including on page load - u
 Relies on jQuery because I haven't made it not. Pull requests are accepted.
 
 
-## Usage ##
 
-It's just one function, you call it once and forget about it.
+## Basic Usage ##
+
+**Notice that things work slightly different with Hashy v1.0.0+. Hashy is now an object, not a function.**
 
     <a href="#foo" class="smooth-scrolling-links">Click me</a>
 
     <script src="hashy.js"></script>
     <script>
         $(window).load(function() {
-            hashy('.smooth-scrolling-links', #fixed-header');
+            Hashy.init('.smooth-scrolling-links', #fixed-header');
         });
     </script>
 
 Marvelous.
 
 
+
 ## Parameters ##
 
-    hashy(link_selector, offset_selector);
+    Hashy.init(link_selector, offset_selector);
 
 
 **link_selector**
@@ -41,10 +43,29 @@ When something with this selector is clicked hashy will look on the current page
 This optional selector is for use with fixed menus that normally cover content when using hash links. For single menus an id selector is recommended, e.g. `hashy('#main-menu')`. If you have multiple menus you can pass in a selector that matches multiple items. The scroll will then be offset by the *combined height* of these elements.
 
 
+
+## Advanced Usage ##
+
+There are also a couple of helper methods you can use if you like.
+
+### scrollToHash ###
+
+    Hashy.scrollToHash('#somewhere')
+
+Smooth scroll to the given hash and update the address bar.
+
+### setHash ###
+
+    Hashy.setHash(#whatever);
+
+Update the address bar - *don't* scroll.
+
+
+
 ## Dynamically Sized Content ##
 
 If your content resizes when the page loads, you're going to want to call hashy after that is done, otherwise the offset calculations may be incorrect. Something like this might help:
 
     $(window).load(function() {
-        hashy('.smooth-scrolling-links', #fixed-header');
+        Hashy.init('.smooth-scrolling-links', #fixed-header');
     });
