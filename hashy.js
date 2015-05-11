@@ -16,7 +16,8 @@ var Hashy = {
    * @param {function} callback [Callback function]
    */
   scrollToHash: function (hash, quick, callback) {
-    var offset_height = 0;
+    var offset_height = 0,
+        callback_ran = false;
 
     if (!this.offset_elem.length) {
       offset_height = 0;
@@ -39,13 +40,19 @@ var Hashy = {
           callback();
         }
       } else {
+        // Animating html and body causes the animate() callback
+        // to be called twice. We'll use callback_ran to prevent
+        // calling our own callback twice.
         jQuery('html, body').stop().animate({
           'scrollTop': scroll_dist
         }, this.scroll_time, 'swing', function () {
           Hashy.setHash(hash);
 
           if (callback) {
-            callback();
+            if (!callback_ran) {
+              callback();
+              callback_ran = true;
+            }
           }
         });
       }
