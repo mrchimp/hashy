@@ -7,13 +7,15 @@
 var Hashy = {
 
   offset_elem: null,
+  scroll_time: 400,
 
   /**
    * Scroll the window to a given hash
-   * @param  {string}  hash  [The hash to scroll to, including # symbol]
-   * @param  {boolean} quick [If true, moves instantly - no smooth scroll]
+   * @param {string}  hash  [The hash to scroll to, including # symbol]
+   * @param {boolean} quick [If true, moves instantly - no smooth scroll]
+   * @param {function} callback [Callback function]
    */
-  scrollToHash: function (hash, quick) {
+  scrollToHash: function (hash, quick, callback) {
     var offset_height = 0;
 
     if (!this.offset_elem.length) {
@@ -32,11 +34,19 @@ var Hashy = {
       if (quick) {
         window.scroll(0, scroll_dist);
         Hashy.setHash(hash);
+        
+        if (callback) {
+          callback();
+        }
       } else {
         jQuery('html, body').stop().animate({
           'scrollTop': scroll_dist
-        }, 400, 'swing', function () {
+        }, this.scroll_time, 'swing', function () {
           Hashy.setHash(hash);
+
+          if (callback) {
+            callback();
+          }
         });
       }
     }

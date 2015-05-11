@@ -96,7 +96,9 @@
 			e.preventDefault();
 
 			// Scroll to a given hash and update the address bar
-			Hashy.scrollToHash('#top');
+			Hashy.scrollToHash('#top', false, function () {
+				console.log('Finished scrolling.');
+			});
 		});
 
 

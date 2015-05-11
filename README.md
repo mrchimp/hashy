@@ -50,9 +50,18 @@ There are also a couple of helper methods you can use if you like.
 
 ### scrollToHash ###
 
-    Hashy.scrollToHash('#somewhere')
+    Hashy.scrollToHash(hash, quick, callback)
 
 Smooth scroll to the given hash and update the address bar.
+
+#### Parameters ####
+
+**hash** - The selector to scroll to. e.g. `#somewhere`
+
+**quick** - (optional. Default: false) Don't transition - just go there!
+
+**callback** - (optional) Function to call after scrolling has finished.
+
 
 ### setHash ###
 
