@@ -1,7 +1,7 @@
 {
   "name": "hashy",
   "main": "hashy.min.js",
-  "version": "0.0.7",
+  "version": "1.0.1",
   "homepage": "https://github.com/mrchimp/hashy",
   "authors": [
     "mrchimp <chimpytk@gmail.com>"
