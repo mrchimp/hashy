@@ -1,7 +1,7 @@
 {
   "name": "hashy",
-  "main": "hashy.min.js",
-  "version": "1.0.1",
+  "main": "hashy.js",
+  "version": "1.0.22",
   "homepage": "https://github.com/mrchimp/hashy",
   "authors": [
     "mrchimp <chimpytk@gmail.com>"
@@ -13,7 +13,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "test.html",
+    ".gitignore",
+    "README.md"
   ],
   "dependencies": {
     "jquery": "*"
