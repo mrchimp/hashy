@@ -7,6 +7,14 @@ Offset scroll amount by the height of a given element including on page load - u
 Relies on jQuery because I haven't made it not. Pull requests are accepted.
 
 
+## Installation ##
+
+    bower install --save hashy
+
+    # or
+
+    npm install --save hashy-links
+
 
 ## Basic Usage ##
 
