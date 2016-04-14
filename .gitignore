@@ -1,2 +1,4 @@
 bower_components/
 npm-debug.log
+node_modules/
+test/bundle.js

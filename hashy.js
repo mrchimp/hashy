@@ -1,19 +1,17 @@
-(function (root, factory) {
+/**
+* Smooth scroll to hash links.
+* Scroll to hash links on load.
+* Offset by height of fixed menu.
+*/
+(function (root, Hashy) {
   if ( typeof define === 'function' && define.amd ) {
-    define(factory);
+    define(Hashy);
   } else if ( typeof exports === 'object' ) {
-    module.exports = factory();
+    module.exports = Hashy;
   } else {
-    root.Hashy = factory();
+    root.Hashy = Hashy;
   }
-}(this, function () {
-
-  /**
-   * Smooth scroll to hash links.
-   * Scroll to hash links on load.
-   * Offset by height of fixed menu.
-   */
-  return {
+}(this, {
     offset_elem: null,
     scroll_time: 400,
 
@@ -23,27 +21,26 @@
      * @param {boolean} quick [If true, moves instantly - no smooth scroll]
      * @param {function} callback [Callback function]
      */
-    scrollToHash: function (hash, quick, callback, offset_val) {
+    scrollToHash: function (hash, quick, callback, extra_offset) {
       var offset_height = 0,
-          callback_ran = false,
-          offset_val = typeof offset_val !== 'undefined' ? offset_val : 0;
+          callback_ran = false;
 
-      if (!this.offset_elem.length) {
-        offset_height = 0;
-      } else {
+      extra_offset = typeof extra_offset !== 'undefined' ? extra_offset : 0;
+
+      if (this.offset_elem.length) {
         this.offset_elem.each(function () {
-          offset_height += (jQuery(this).height() - offset_val);
+          offset_height += (jQuery(this).height() - extra_offset);
         });
       }
 
-      $target = jQuery(hash);
+      var $target = jQuery(hash);
 
       if ($target.length) {
-        scroll_dist = $target.offset().top - offset_height;
+        var scroll_dist = Math.max(0, $target.offset().top - offset_height);
 
         if (quick) {
           window.scroll(0, scroll_dist);
-          Hashy.setHash(hash);
+          this.setHash(hash);
 
           if (callback) {
             callback();
@@ -55,7 +52,7 @@
           jQuery('html, body').stop().animate({
             'scrollTop': scroll_dist
           }, this.scroll_time, 'swing', function () {
-            Hashy.setHash(hash);
+            this.setHash(hash);
 
             if (callback) {
               if (!callback_ran) {
@@ -63,7 +60,7 @@
                 callback_ran = true;
               }
             }
-          });
+          }.bind(this));
         }
       }
     },
@@ -84,28 +81,28 @@
      * Initialise Hashy
      * @param {String} link_sel   [Selector for hash link elements]
      * @param {String} offset_sel [Selector for offset element]
-     * @param {Integer} offset_val [Value for additional offset]
+     * @param {Integer} extra_offset [Value for additional offset]
      */
-    init: function (link_sel, offset_sel, offset_val) {
+    init: function (link_sel, offset_sel, extra_offset) {
       this.offset_elem = jQuery(offset_sel);
 
-      // Smooth scroll hash links
+      // Smooth scroll hash links when clicked
       jQuery(link_sel).on('click', function (e) {
-        if (jQuery(this.hash).length) {
+        var hash = e.currentTarget.hash;
+        if (jQuery(hash).length) {
           e.preventDefault();
-          Hashy.scrollToHash(this.hash, false, false, offset_val);
+          this.scrollToHash(hash, false, false, extra_offset);
         }
-      });
+      }.bind(this));
 
       // Scroll to hash on page load. The browser does this by
       // default but this will compensate for sticky headers
       if (window.location.hash) {
         jQuery(window).load(function () {
           window.setTimeout(function() {
-            Hashy.scrollToHash(window.location.hash, true);
-          }, 200);
-        });
+            this.scrollToHash(window.location.hash, true);
+          }.bind(this), 200);
+        }.bind(this));
       }
     }
-  };
 }));

@@ -6,7 +6,6 @@ Offset scroll amount by the height of a given element including on page load - u
 
 Relies on jQuery because I haven't made it not. Pull requests are accepted.
 
-
 ## Installation ##
 
     bower install --save hashy
@@ -20,23 +19,23 @@ Relies on jQuery because I haven't made it not. Pull requests are accepted.
 
 **Notice that things work slightly different with Hashy v1.0.0+. Hashy is now an object, not a function.**
 
+    index.html
+    ----------
     <a href="#foo" class="smooth-scrolling-links">Click me</a>
 
-    <script src="hashy.js"></script>
-    <script>
-        $(window).load(function() {
-            Hashy.init('.smooth-scrolling-links', '#fixed-header');
-        });
-    </script>
+
+    main.js
+    -------
+    import Hashy from hashy-links;
+
+    Hashy.init('.smooth-scrolling-links', '#fixed-header');
 
 Marvelous.
-
 
 
 ## Parameters ##
 
     Hashy.init(link_selector, offset_selector);
-
 
 **link_selector**
 
@@ -44,23 +43,24 @@ This is a jQuery selector for links that you want to smooth scroll when clicked.
 
 When something with this selector is clicked hashy will look on the current page for an element with the given ID. If this element is not found, the default link's action will be used. This should allow external (not same page) links to be selected without causing problems except...
 
-> **Potential Issue** - If you are on `foo.html` and have a link to `bar.html#baz` but `#baz` also exists on the current page then your link will effectively be broken. This is an issue that needs to be fixed. You can avoid this problem by being careful which links to pick with your selector. For example, you probably don't want to do `hashy('a')`.
+> **Potential Issue** - If you are on `foo.html` and have a link to `bar.html#baz` but `#baz` also exists on the current page then your link will effectively be broken. This is an issue that needs to be fixed. You can avoid this problem by being careful which links to pick with your selector. For example, **you probably don't want to do `hashy('a')`**.
 
 **offset_selector**
 
 This optional selector is for use with fixed menus that normally cover content when using hash links. For single menus an id selector is recommended, e.g. `hashy('#main-menu')`. If you have multiple menus you can pass in a selector that matches multiple items. The scroll will then be offset by the *combined height* of these elements.
 
 
-
 ## Advanced Usage ##
 
 There are also a couple of helper methods you can use if you like.
 
+
 ### scrollToHash ###
 
-    Hashy.scrollToHash(hash, quick, callback)
+    Hashy.scrollToHash(hash, quick, callback, extra_offset)
 
 Smooth scroll to the given hash and update the address bar.
+
 
 #### Parameters ####
 
@@ -70,13 +70,14 @@ Smooth scroll to the given hash and update the address bar.
 
 **callback** - (optional) Function to call after scrolling has finished.
 
+**extra_offset** - (optional) An additional pixel value to offset the scroll by
+
 
 ### setHash ###
 
     Hashy.setHash(#whatever);
 
 Update the address bar - *don't* scroll.
-
 
 
 ## Dynamically Sized Content ##

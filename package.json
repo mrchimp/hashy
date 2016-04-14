@@ -1,6 +1,6 @@
 {
   "name": "hashy-links",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Hash link fix",
   "main": "hashy.js",
   "scripts": {
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/mrchimp/hashy/issues"
   },
-  "homepage": "https://github.com/mrchimp/hashy#readme"
+  "homepage": "https://github.com/mrchimp/hashy#readme",
+  "devDependencies": {
+    "browserify": "~13.0.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babelify": "^7.2.0"
+  }
 }

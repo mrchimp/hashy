@@ -81,34 +81,15 @@
 		<a href="#" class="scroll-to-test">Scroll to top</a>
 	</p>
 	<p>
+		<a href="#" class="offset-test">Scroll to top + 10px</a>
+	</p>
+	<p>
+		<a href="#" class="offset-test-too-far">Scroll toe far up -100px</a>
+	</p>
+	<p>
 		<a href="#" class="set-a-hash">Set a hash</a>
 	</p>
-	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="hashy.js"></script>
-	<script type="text/javascript">
-		// Initialise hashy.
-		// This enables smooth scrolling on hash links and will scroll to a hash
-		// on load, if appropriate.
-		Hashy.init('.smooth-scroll', 'nav');
-
-
-		$('.scroll-to-test').on('click', function (e) {
-			e.preventDefault();
-
-			// Scroll to a given hash and update the address bar
-			Hashy.scrollToHash('#top', false, function () {
-				console.log('Finished scrolling.');
-			});
-		});
-
-
-		$('.set-a-hash').on('click', function (e) {
-			e.preventDefault();
-
-			// Set the hash in the address bar.
-			// Doesn't scroll the page.
-			Hashy.setHash('#some-random-hash');
-		});
-	</script>
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+	<script src="bundle.js"></script>
 </body>
 </html>
