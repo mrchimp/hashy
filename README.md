@@ -35,7 +35,7 @@ Marvelous.
 
 ## Parameters ##
 
-    Hashy.init(link_selector, offset_selector);
+    Hashy.init(link_selector, offset_selector, extra_offset);
 
 **link_selector**
 
@@ -48,6 +48,10 @@ When something with this selector is clicked hashy will look on the current page
 **offset_selector**
 
 This optional selector is for use with fixed menus that normally cover content when using hash links. For single menus an id selector is recommended, e.g. `hashy('#main-menu')`. If you have multiple menus you can pass in a selector that matches multiple items. The scroll will then be offset by the *combined height* of these elements.
+
+**extra_offset**
+
+An optional number of pixels to offset the scroll by, in addition the distance calculated by `offset_selector`. Can be positive or negative. You could even make it really, *really* negative and it will just stop at the top of the page. I've got you covered, bud.
 
 
 ## Advanced Usage ##
