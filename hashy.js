@@ -23,15 +23,16 @@
      * @param {boolean} quick [If true, moves instantly - no smooth scroll]
      * @param {function} callback [Callback function]
      */
-    scrollToHash: function (hash, quick, callback) {
+    scrollToHash: function (hash, quick, callback, offset_val) {
       var offset_height = 0,
-          callback_ran = false;
+          callback_ran = false,
+          offset_val = typeof offset_val !== 'undefined' ? offset_val : 0;
 
       if (!this.offset_elem.length) {
         offset_height = 0;
       } else {
         this.offset_elem.each(function () {
-          offset_height += jQuery(this).height();
+          offset_height += (jQuery(this).height() - offset_val);
         });
       }
 
@@ -83,15 +84,16 @@
      * Initialise Hashy
      * @param {String} link_sel   [Selector for hash link elements]
      * @param {String} offset_sel [Selector for offset element]
+     * @param {Integer} offset_val [Value for additional offset]
      */
-    init: function (link_sel, offset_sel) {
+    init: function (link_sel, offset_sel, offset_val) {
       this.offset_elem = jQuery(offset_sel);
 
       // Smooth scroll hash links
       jQuery(link_sel).on('click', function (e) {
         if (jQuery(this.hash).length) {
           e.preventDefault();
-          Hashy.scrollToHash(this.hash, false);
+          Hashy.scrollToHash(this.hash, false, false, offset_val);
         }
       });
 
