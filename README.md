@@ -25,7 +25,7 @@ Relies on jQuery because I haven't made it not. Pull requests are accepted.
     <script src="hashy.js"></script>
     <script>
         $(window).load(function() {
-            Hashy.init('.smooth-scrolling-links', #fixed-header');
+            Hashy.init('.smooth-scrolling-links', '#fixed-header');
         });
     </script>
 
