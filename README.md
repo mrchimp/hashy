@@ -26,7 +26,7 @@ Relies on jQuery because I haven't made it not. Pull requests are accepted.
 
     main.js
     -------
-    import Hashy from hashy-links;
+    import Hashy from 'hashy-links';
 
     Hashy.init('.smooth-scrolling-links', '#fixed-header');
 
