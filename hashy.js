@@ -98,7 +98,7 @@
       // Scroll to hash on page load. The browser does this by
       // default but this will compensate for sticky headers
       if (window.location.hash) {
-        jQuery(window).load(function () {
+        jQuery(window).on('load', function () {
           window.setTimeout(function() {
             this.scrollToHash(window.location.hash, true);
           }.bind(this), 200);
