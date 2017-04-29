@@ -91,3 +91,10 @@ If your content resizes when the page loads, you're going to want to call hashy 
     $(window).load(function() {
         Hashy.init('.smooth-scrolling-links', #fixed-header');
     });
+
+
+## Development
+
+I haven't made any automated tests yet.
+
+Run `npm run dev` to compile to ES5 and create `bundle.js`. Then load `test/index.html` in a browser.

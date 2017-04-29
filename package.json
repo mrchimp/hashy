@@ -4,7 +4,7 @@
   "description": "Hash link fix",
   "main": "hashy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node ./test/make.js"
   },
   "repository": {
     "type": "git",
