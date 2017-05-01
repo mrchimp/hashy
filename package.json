@@ -1,6 +1,6 @@
 {
   "name": "hashy-links",
-  "version": "1.0.7",
+  "version": "2.0.0b",
   "description": "Hash link fix",
   "main": "hashy.js",
   "scripts": {
