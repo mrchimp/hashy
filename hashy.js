@@ -12,8 +12,7 @@
     root.Hashy = Hashy;
   }
 }(this, {
-    offset_elem: null,
-    scroll_time: 400,
+    options: null,
 
     /**
      * Scroll the window to a given hash
@@ -21,47 +20,61 @@
      * @param {boolean} quick [If true, moves instantly - no smooth scroll]
      * @param {function} callback [Callback function]
      */
-    scrollToHash: function (hash, quick, callback, extra_offset) {
-      var offset_height = 0,
-          callback_ran = false;
+    scrollToHash: function (hash, options) {
+      var offset = 0;
+      var callback_ran = false;
+      var target = jQuery(hash);
 
-      extra_offset = typeof extra_offset !== 'undefined' ? extra_offset : 0;
+      options = jQuery.extend({
+        quick: false,
+        callback: null,
+        extra_offset: 0,
+        animate_options: {
+          easing: 'swing',
+          duration: 400,
+        },
+      }, options);
 
-      if (this.offset_elem.length) {
-        this.offset_elem.each(function () {
-          offset_height += (jQuery(this).height() - extra_offset);
+      if (!target.length) {
+        return false;
+      }
+
+      if (this.options.offset_elem.length) {
+        this.options.offset_elem.each(function () {
+          offset -= (jQuery(this).height());
         });
       }
 
-      var $target = jQuery(hash);
+      var scroll_dist = target.offset().top;
 
-      if ($target.length) {
-        var scroll_dist = Math.max(0, $target.offset().top - offset_height);
+      var final_scroll = Math.max(0, Math.max(0, scroll_dist + offset) - options.extra_offset);
 
-        if (quick) {
-          window.scroll(0, scroll_dist);
+      if (options.quick) {
+        window.scroll(0, final_scroll);
+        this.setHash(hash);
+
+        if (options.callback) {
+          options.callback();
+        }
+      } else {
+        options.animate_options.complete = function () {
           this.setHash(hash);
 
-          if (callback) {
-            callback();
-          }
-        } else {
-          // Animating html and body causes the animate() callback
-          // to be called twice. We'll use callback_ran to prevent
-          // calling our own callback twice.
-          jQuery('html, body').stop().animate({
-            'scrollTop': scroll_dist
-          }, this.scroll_time, 'swing', function () {
-            this.setHash(hash);
-
-            if (callback) {
-              if (!callback_ran) {
-                callback();
-                callback_ran = true;
-              }
+          if (options.callback) {
+            // Animating html and body causes the animate() callback
+            // to be called twice. We'll use callback_ran to prevent
+            // calling our own callback twice.
+            if (!callback_ran) {
+              options.callback();
+              callback_ran = true;
             }
-          }.bind(this));
-        }
+          }
+        }.bind(this);
+        
+        jQuery('html, body').stop().animate(
+          {scrollTop: final_scroll},
+          options.animate_options
+        );
       }
     },
 
@@ -79,20 +92,45 @@
 
     /**
      * Initialise Hashy
-     * @param {String} link_sel   [Selector for hash link elements]
-     * @param {String} offset_sel [Selector for offset element]
-     * @param {Integer} extra_offset [Value for additional offset]
+     * @param {Object} options
      */
-    init: function (link_sel, offset_sel, extra_offset) {
-      this.offset_elem = jQuery(offset_sel);
-
-      // Smooth scroll hash links when clicked
-      jQuery(link_sel).on('click', function (e) {
+    init: function (options) {
+      this.options = jQuery.extend({
+        selector: '.smooth-scroll',
+        offset_elem: null,
+        extra_offset: 0,
+        animate_options: {},
+        callback: null,
+      }, options);
+      
+      this.options.offset_elem = jQuery(this.options.offset_elem);
+      
+      jQuery(this.options.selector).on('click', function (e) {
         var hash = e.currentTarget.hash;
-        if (jQuery(hash).length) {
-          e.preventDefault();
-          this.scrollToHash(hash, false, false, extra_offset);
+
+        if (!jQuery(hash).length) {
+          return false;
         }
+
+        e.preventDefault();
+
+        var extra_offset = this.options.extra_offset;
+        var data_offset = $(e.currentTarget).data('hashy-offset');
+        
+        if (data_offset) {
+          if (String(data_offset).substr(0, 1) === '+' || String(data_offset).substr(0, 1) === '-') {
+            extra_offset += parseInt(data_offset, 10);
+          } else {
+            extra_offset = data_offset;
+          }
+        }
+
+        this.scrollToHash(hash, {
+          quick: !!$(e.currentTarget).data('hashy-quick'),
+          callback: this.options.callback,
+          extra_offset: extra_offset,
+          animate_options: this.options.animate_options,
+        });
       }.bind(this));
 
       // Scroll to hash on page load. The browser does this by
@@ -100,7 +138,9 @@
       if (window.location.hash) {
         jQuery(window).on('load', function () {
           window.setTimeout(function() {
-            this.scrollToHash(window.location.hash, true);
+            this.scrollToHash(window.location.hash, jQuery.extend(this.options, {
+              quick: true
+            }));
           }.bind(this), 200);
         }.bind(this));
       }

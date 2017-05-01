@@ -1,45 +1,53 @@
 "use strict";
 
-// This file is just for testing. When you run `node make.js` it will create
-// bundle.js which will contain this file and hashy.js
-
 import Hashy from '../hashy.js';
 
-// Initialise hashy.
-// This enables smooth scrolling on hash links and will scroll to a hash
-// on load, if appropriate.
-Hashy.init('.smooth-scroll', 'nav');
+/**
+ * Initialise hashy.
+ * 
+ * This enables smooth scrolling on hash links and will scroll to a hash
+ * on load, if appropriate.
+ */
+Hashy.init({
+  selector: '.smooth-scroll', // Make these links mooth scroll
+  offset_elem: 'nav',         // Offset scroll by the height of these elements
+  extra_offset: 50,          // Compensate for section padding
+  callback: function () {
+    console.log('Complete!');
+  },
+});
 
 
 // Scroll to a given hash and update the address bar
-$('.scroll-to-test').on('click', function (e) {
+$('.scroll-to-top').on('click', function (e) {
   e.preventDefault();
-  Hashy.scrollToHash('#top', false, function () {
-    console.log('Finished scrolling.');
+  Hashy.scrollToHash('#top', {
+    quick: false,
   });
 });
 
 
-// Scroll to 10px below the top of the page
+// Scroll to 100px below the top of the page
 $('.offset-test').on('click', function (e) {
   e.preventDefault();
-  Hashy.scrollToHash('#top', false, function () {
-    console.log('Finished scrolling.');
-  }, 10);
+  Hashy.scrollToHash('#top', {
+    quick: false,
+    extra_offset: -100,
+  });
 });
 
 
 // Try to scroll above the top of the page - actually just scroll to top
 $('.offset-test-too-far').on('click', function (e) {
   e.preventDefault();
-  Hashy.scrollToHash('#top', false, function () {
-    console.log('Finished scrolling.');
-  }, -100);
+  Hashy.scrollToHash('#top', {
+    quick: false,
+    extra_offset: 100,
+  });
 });
 
 
-// Just set the hash in the address bar.
-// Doesn't scroll the page.
+// Just set the hash in the address bar but don't scroll the page
 $('.set-a-hash').on('click', function (e) {
   e.preventDefault();
   Hashy.setHash('#some-random-hash');

@@ -5,8 +5,15 @@
 	<title>Hashy.js</title>
 	<style type="text/css">
 		body {
-			padding-top: 80px;
+			padding: 80px 0;
+			margin: 0;
 			font-family: "Ubuntu", Helvetica, Arial, sans-serif;
+		}
+		section {
+			padding: 30px 15px;
+		}
+		section:nth-child(even) {
+			background-color: #eee;
 		}
 		nav {
 			position: fixed;
@@ -25,6 +32,16 @@
 			max-width: 800px;
 			margin-left: auto;
 			margin-right: auto;
+			overflow: auto;
+		}
+		.left-col,
+		.right-col {
+			width: 50%;
+			float: left;
+		}
+		#top {
+			top: 0;
+			position: absolute;
 		}
 	</style>
 
@@ -33,77 +50,122 @@
 	<a href="#" id="top"></a>
 	<nav class="navbar-1">This is a fixed nav.</nav>
 	<nav class="navbar-2">This is also a fixed nav.</nav>
-	<div class="container">
-		<h1 id="link-1">Smooth link</h1>
-		<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
-		<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
-		<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
-		<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
-		<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
-		<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
-		<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
-		<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
-		<p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
-		<h1 id="link-2">Non-smooth Links</h1>
-		<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
-		<p><a href="#link-1">Link 1</a></p>
-		<p><a href="#link-2">Link 2</a></p>
-		<p><a href="#link-3">Link 3</a></p>
-		<p><a href="#link-4">Link 4</a></p>
-		<p><a href="#link-5">Link 5</a></p>
-		<p><a href="#link-6">Link 6</a></p>
-		<p><a href="#link-7">Link 7</a></p>
-		<h1 id="link-3">Smooth Links</h1>
-		<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
-		<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
-		<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
-		<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
-		<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
-		<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
-		<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
-		<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
-		<h1 id="link-4">Non-smooth Links</h1>
-		<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
-		<p><a href="#link-1">Link 1</a></p>
-		<p><a href="#link-2">Link 2</a></p>
-		<p><a href="#link-3">Link 3</a></p>
-		<p><a href="#link-4">Link 4</a></p>
-		<p><a href="#link-5">Link 5</a></p>
-		<p><a href="#link-6">Link 6</a></p>
-		<p><a href="#link-7">Link 7</a></p>
-		<h1 id="link-5">Smooth Links</h1>
-		<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
-		<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
-		<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
-		<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
-		<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
-		<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
-		<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
-		<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
-		<h1 id="link-6">Non-smooth Links</h1>
-		<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
-		<p><a href="#link-1">Link 1</a></p>
-		<p><a href="#link-2">Link 2</a></p>
-		<p><a href="#link-3">Link 3</a></p>
-		<p><a href="#link-4">Link 4</a></p>
-		<p><a href="#link-5">Link 5</a></p>
-		<p><a href="#link-6">Link 6</a></p>
-		<p><a href="#link-7">Link 7</a></p>
-		<h1 id="link-7">Other Links</h1>
-		<p>These are links that use other settings. The event handlers are attached to these links indiviually.</p>
-		<p>
-			<a href="#" class="scroll-to-test">Scroll to top</a>
-		</p>
-		<p>
-			<a href="#" class="offset-test">Scroll to top + 10px</a>
-		</p>
-		<p>
-			<a href="#" class="offset-test-too-far">Scroll toe far up -100px</a>
-		</p>
-		<p>
-			<a href="#" class="set-a-hash">Set a hash</a>
-		</p>
-	</div>
+	<section>
+		<div class="container">
+			<h1 id="link-1">1. Smooth link</h1>
+			<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
+			<div class="left-col">
+				<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
+				<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
+				<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
+				<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
+				<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
+				<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
+				<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
+				<p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
+			</div>
+			<div class="right-col">
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="-50">Link 3 (offset -50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="50">Link 3 (offset 50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="+50">Link 3 (offset +50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-quick="true">Link 3 (quick)</a></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-2">2. Non-smooth Links</h1>
+			<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
+			<p><a href="#link-1">Link 1</a></p>
+			<p><a href="#link-2">Link 2</a></p>
+			<p><a href="#link-3">Link 3</a></p>
+			<p><a href="#link-4">Link 4</a></p>
+			<p><a href="#link-5">Link 5</a></p>
+			<p><a href="#link-6">Link 6</a></p>
+			<p><a href="#link-7">Link 7</a></p>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-3">3. Smooth Links</h1>
+			<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
+			<div class="left-col">
+				<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
+				<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
+				<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
+				<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
+				<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
+				<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
+				<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
+				<p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
+			</div>
+			<div class="right-col">
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="-50">Link 3 (offset -50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="50">Link 3 (offset 50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="+50">Link 3 (offset +50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-quick="true">Link 3 (quick)</a></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-4">4. Non-smooth Links</h1>
+			<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
+			<p><a href="#link-1">Link 1</a></p>
+			<p><a href="#link-2">Link 2</a></p>
+			<p><a href="#link-3">Link 3</a></p>
+			<p><a href="#link-4">Link 4</a></p>
+			<p><a href="#link-5">Link 5</a></p>
+			<p><a href="#link-6">Link 6</a></p>
+			<p><a href="#link-7">Link 7</a></p>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-5">5. Smooth Links</h1>
+			<p>These links use Hashy because they have the smooth-scroll class and will scroll you smoothly to the destination.</p>
+			<div class="left-col">
+				<p><a href="#link-1" class="smooth-scroll">Link 1</a></p>
+				<p><a href="#link-2" class="smooth-scroll">Link 2</a></p>
+				<p><a href="#link-3" class="smooth-scroll">Link 3</a></p>
+				<p><a href="#link-4" class="smooth-scroll">Link 4</a></p>
+				<p><a href="#link-5" class="smooth-scroll">Link 5</a></p>
+				<p><a href="#link-6" class="smooth-scroll">Link 6</a></p>
+				<p><a href="#link-7" class="smooth-scroll">Link 7</a></p>
+				<p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
+			</div>
+			<div class="right-col">
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="-50">Link 3 (offset -50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="50">Link 3 (offset 50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-offset="+50">Link 3 (offset +50)</a></p>
+				<p><a href="#link-3" class="smooth-scroll" data-hashy-quick="true">Link 3 (quick)</a></p>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-6">6. Non-smooth Links</h1>
+			<p>These links don't use Hashy. They will scroll you up and down using the normal browser behaviour.</p>
+			<p><a href="#link-1">Link 1</a></p>
+			<p><a href="#link-2">Link 2</a></p>
+			<p><a href="#link-3">Link 3</a></p>
+			<p><a href="#link-4">Link 4</a></p>
+			<p><a href="#link-5">Link 5</a></p>
+			<p><a href="#link-6">Link 6</a></p>
+			<p><a href="#link-7">Link 7</a></p>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<h1 id="link-7">7. Other Links</h1>
+			<p>These are links that use other settings. The event handlers are attached to these links indiviually.</p>
+			<p><a href="#top" class="scroll-to-top">Scroll to top</a></p>
+			<p><a href="#top" class="offset-test">Scroll to top -100px</a></p>
+			<p><a href="#top" class="offset-test-too-far">Scroll too far up +100px</a></p>
+			<p><a href="#some-random-hash" class="set-a-hash">Set a hash</a></p>
+			<p><a href="#link-1" class="smooth-scroll" data-hashy-quick="true">Move to top quickly</a></p>
+		</div>
+	</section>
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
 	<script src="bundle.js"></script>
 </body>
