@@ -105,7 +105,7 @@ export default class Hashy {
           callback();
         }
       } else {
-        this.doScrolling(scroll_dist, this.scroll_time);
+        this.scrollToY(scroll_dist, this.scroll_time);
       }
     }
   }
@@ -129,7 +129,7 @@ export default class Hashy {
    * @param {number} y        [Distance from top of page to scroll to]
    * @param {number} duration [Time to take in ms]
    */
-  doScrolling(y, duration) {
+  scrollToY(y, duration) {
     let start_y = window.pageYOffset;
     let diff = y - start_y;
     let start;
