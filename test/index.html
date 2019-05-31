@@ -1,95 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta charset='utf-8'>
-	<title>Hashy.js</title>
-	<style type="text/css">
-		body {
-			padding-top: 80px;
-		}
-		nav {
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 40px;
-			background-color: #444;
-			color: white;
-		}
+  <head>
+    <meta charset="utf-8" />
+    <title>Hashy.js</title>
+    <style type="text/css">
+      body {
+        padding-top: 80px;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background-color: #444;
+        color: white;
+      }
 
-		.navbar-2 {
-			top: 40px;
-			background-color: #666;
-		}
-	</style>
-
-</head>
-<body>
-	<a href="#" id="top"></a>
-	<nav class="navbar-1">This is a fixed navbar.</nav>
-	<nav class="navbar-2">This is a fixed navbar.</nav>
-	<p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
-	<p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
-	<p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
-	<p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
-	<p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
-	<p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
-	<p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
-	<h1 id="link-1">Test 1</h1>
-	<p>Lebowski ipsum hello, Pilar? My name is Walter Sobchak, we spoke on the phone, this is my associate Jeffrey Lebowski. Dolor sit amet, consectetur adipiscing elit praesent ac magna justo pellentesque ac lectus quis. That's fuckin' combat. The man in the black pyjamas, Dude. Worthy fuckin' adversary. Elit blandit fringilla a ut turpis. Jesus, man, can you change the station? Praesent felis ligula, malesuada suscipit malesuada non, ultrices non urna sed orci.</p>
-	<p><a href="#link-1">Link 1 (not smooth)</a></p>
-	<p><a href="#link-2">Link 2 (not smooth)</a></p>
-	<p><a href="#link-3">Link 3 (not smooth)</a></p>
-	<p><a href="#link-4">Link 4 (not smooth)</a></p>
-	<p><a href="#link-5">Link 5 (not smooth)</a></p>
-	<p><a href="#link-6">Link 6 (not smooth)</a></p>
-	<h1 id="link-2">Test 2</h1>
-	<p>You got the wrong guy. I'm the Dude, man. Ac maecenas vitae eros velit, eu suscipit erat integer. Finishing my coffee. Purus lacus, pretium vel venenatis eu, volutpat. You think veer kidding und making mit de funny stuff? Non erat donec a metus ac eros dictum aliquet nulla consectetur egestas placerat. I have no choice but to tell these bums that they should do whatever is necessary to recover their money from you, Jeffrey Lebowski. Maecenas pulvinar nisl et nisl.</p>
-	<p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
-	<p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
-	<p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
-	<p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
-	<p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
-	<p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
-	<h1 id="link-3">Test 3</h1>
-	<p>Life does not stop and start at your convenience, you miserable piece of shit. Rhoncus at volutpat felis blandit in libero turpis, laoreet et. I mean I had an M16, Jacko, not an Abrams fucking tank. Molestie sed, volutpat et erat nulla ut orci quis neque consectetur tincidunt. HERE'S WHAT HAPPENS, LARRY! Aliquam erat volutpat donec aliquam orci eget mi lobortis sed tincidunt diam mattis. …and even if he's a lazy man, and the Dude was certainly that—quite possibly the laziest in Los Angeles County. Fusce sem quam, ultricies sed convallis ac, hendrerit eu urna curabitur.</p>
-	<p><a href="#link-1">Link 1 (not smooth)</a></p>
-	<p><a href="#link-2">Link 2 (not smooth)</a></p>
-	<p><a href="#link-3">Link 3 (not smooth)</a></p>
-	<p><a href="#link-4">Link 4 (not smooth)</a></p>
-	<p><a href="#link-5">Link 5 (not smooth)</a></p>
-	<p><a href="#link-6">Link 6 (not smooth)</a></p>
-	<h1 id="link-4">Test 4</h1>
-	<p>VEE FUCK YOU UP, MAN! VEE TAKE YOUR MONEY! Ipsum, placerat id condimentum rutrum, rhoncus ac lorem aliquam placerat posuere. D'ya have a good sarsaparilla? Neque, at dignissim magna ullamcorper in aliquam. Zere ARE no ROOLZ! Sagittis massa ac tortor ultrices faucibus curabitur eu mi sapien, ut ultricies. This guy fucking walks. I've never been more certain of anything in my life. Ipsum morbi eget risus nulla nullam vel nisi enim, vel auctor.</p>
-	<p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
-	<p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
-	<p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
-	<p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
-	<p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
-	<p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
-	<h1 id="link-5">Test 5</h1>
-	<p>Huh? Oh. Yeah. Tape deck. Couple of Creedence tapes. And there was a, uh… my briefcase. Ante morbi id urna vel felis lacinia placerat vestibulum turpis nulla, viverra. All right, Plan B. You might want to watch out the front window there, Larry. Nec volutpat ac, ornare id. Where's my goddamn money, you bum?! Lectus cras pharetra faucibus tristique nullam non. I know my rights. Accumsan justo nulla facilisi integer interdum elementum nulla, nec eleifend nisl euismod.</p>
-	<p><a href="#link-1">Link 1 (not smooth)</a></p>
-	<p><a href="#link-2">Link 2 (not smooth)</a></p>
-	<p><a href="#link-3">Link 3 (not smooth)</a></p>
-	<p><a href="#link-4">Link 4 (not smooth)</a></p>
-	<p><a href="#link-5">Link 5 (not smooth)</a></p>
-	<p><a href="#link-6">Link 6 (not smooth)</a></p>
-	<h1 id="link-6">Test 6</h1>
-	<p>Life does not stop and start at your convenience, you miserable piece of shit. Rhoncus at volutpat felis blandit in libero turpis, laoreet et. I mean I had an M16, Jacko, not an Abrams fucking tank. Molestie sed, volutpat et erat nulla ut orci quis neque consectetur tincidunt. HERE'S WHAT HAPPENS, LARRY! Aliquam erat volutpat donec aliquam orci eget mi lobortis sed tincidunt diam mattis. …and even if he's a lazy man, and the Dude was certainly that—quite possibly the laziest in Los Angeles County. Fusce sem quam, ultricies sed convallis ac, hendrerit eu urna curabitur.</p>
-	<p>
-		<a href="#" class="scroll-to-test">Scroll to top</a>
-	</p>
-	<p>
-		<a href="#" class="offset-test">Scroll to top + 10px</a>
-	</p>
-	<p>
-		<a href="#" class="offset-test-too-far">Scroll toe far up -100px</a>
-	</p>
-	<p>
-		<a href="#" class="set-a-hash">Set a hash</a>
-	</p>
-	<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-	<script src="bundle.js"></script>
-</body>
+      .navbar-2 {
+        top: 40px;
+        background-color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#" id="top"></a>
+    <nav class="navbar-1">This is a fixed navbar.</nav>
+    <nav class="navbar-2">This is a fixed navbar.</nav>
+    <p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
+    <p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
+    <p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
+    <p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
+    <p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
+    <p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
+    <p><a href="otherpage.html#whatever" class="smooth-scroll">Link to somewhere else</a></p>
+    <h1 id="link-1">Test 1</h1>
+    <p>
+      Lebowski ipsum hello, Pilar? My name is Walter Sobchak, we spoke on the phone, this is my
+      associate Jeffrey Lebowski. Dolor sit amet, consectetur adipiscing elit praesent ac magna
+      justo pellentesque ac lectus quis. That's fuckin' combat. The man in the black pyjamas, Dude.
+      Worthy fuckin' adversary. Elit blandit fringilla a ut turpis. Jesus, man, can you change the
+      station? Praesent felis ligula, malesuada suscipit malesuada non, ultrices non urna sed orci.
+    </p>
+    <p><a href="#link-1">Link 1 (not smooth)</a></p>
+    <p><a href="#link-2">Link 2 (not smooth)</a></p>
+    <p><a href="#link-3">Link 3 (not smooth)</a></p>
+    <p><a href="#link-4">Link 4 (not smooth)</a></p>
+    <p><a href="#link-5">Link 5 (not smooth)</a></p>
+    <p><a href="#link-6">Link 6 (not smooth)</a></p>
+    <h1 id="link-2">Test 2</h1>
+    <p>
+      You got the wrong guy. I'm the Dude, man. Ac maecenas vitae eros velit, eu suscipit erat
+      integer. Finishing my coffee. Purus lacus, pretium vel venenatis eu, volutpat. You think veer
+      kidding und making mit de funny stuff? Non erat donec a metus ac eros dictum aliquet nulla
+      consectetur egestas placerat. I have no choice but to tell these bums that they should do
+      whatever is necessary to recover their money from you, Jeffrey Lebowski. Maecenas pulvinar
+      nisl et nisl.
+    </p>
+    <p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
+    <p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
+    <p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
+    <p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
+    <p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
+    <p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
+    <h1 id="link-3">Test 3</h1>
+    <p>
+      Life does not stop and start at your convenience, you miserable piece of shit. Rhoncus at
+      volutpat felis blandit in libero turpis, laoreet et. I mean I had an M16, Jacko, not an Abrams
+      fucking tank. Molestie sed, volutpat et erat nulla ut orci quis neque consectetur tincidunt.
+      HERE'S WHAT HAPPENS, LARRY! Aliquam erat volutpat donec aliquam orci eget mi lobortis sed
+      tincidunt diam mattis. …and even if he's a lazy man, and the Dude was certainly that—quite
+      possibly the laziest in Los Angeles County. Fusce sem quam, ultricies sed convallis ac,
+      hendrerit eu urna curabitur.
+    </p>
+    <p><a href="#link-1">Link 1 (not smooth)</a></p>
+    <p><a href="#link-2">Link 2 (not smooth)</a></p>
+    <p><a href="#link-3">Link 3 (not smooth)</a></p>
+    <p><a href="#link-4">Link 4 (not smooth)</a></p>
+    <p><a href="#link-5">Link 5 (not smooth)</a></p>
+    <p><a href="#link-6">Link 6 (not smooth)</a></p>
+    <h1 id="link-4">Test 4</h1>
+    <p>
+      VEE FUCK YOU UP, MAN! VEE TAKE YOUR MONEY! Ipsum, placerat id condimentum rutrum, rhoncus ac
+      lorem aliquam placerat posuere. D'ya have a good sarsaparilla? Neque, at dignissim magna
+      ullamcorper in aliquam. Zere ARE no ROOLZ! Sagittis massa ac tortor ultrices faucibus
+      curabitur eu mi sapien, ut ultricies. This guy fucking walks. I've never been more certain of
+      anything in my life. Ipsum morbi eget risus nulla nullam vel nisi enim, vel auctor.
+    </p>
+    <p><a href="#link-1" class="smooth-scroll">Link 1 (smooth)</a></p>
+    <p><a href="#link-2" class="smooth-scroll">Link 2 (smooth)</a></p>
+    <p><a href="#link-3" class="smooth-scroll">Link 3 (smooth)</a></p>
+    <p><a href="#link-4" class="smooth-scroll">Link 4 (smooth)</a></p>
+    <p><a href="#link-5" class="smooth-scroll">Link 5 (smooth)</a></p>
+    <p><a href="#link-6" class="smooth-scroll">Link 6 (smooth)</a></p>
+    <h1 id="link-5">Test 5</h1>
+    <p>
+      Huh? Oh. Yeah. Tape deck. Couple of Creedence tapes. And there was a, uh… my briefcase. Ante
+      morbi id urna vel felis lacinia placerat vestibulum turpis nulla, viverra. All right, Plan B.
+      You might want to watch out the front window there, Larry. Nec volutpat ac, ornare id. Where's
+      my goddamn money, you bum?! Lectus cras pharetra faucibus tristique nullam non. I know my
+      rights. Accumsan justo nulla facilisi integer interdum elementum nulla, nec eleifend nisl
+      euismod.
+    </p>
+    <p><a href="#link-1">Link 1 (not smooth)</a></p>
+    <p><a href="#link-2">Link 2 (not smooth)</a></p>
+    <p><a href="#link-3">Link 3 (not smooth)</a></p>
+    <p><a href="#link-4">Link 4 (not smooth)</a></p>
+    <p><a href="#link-5">Link 5 (not smooth)</a></p>
+    <p><a href="#link-6">Link 6 (not smooth)</a></p>
+    <h1 id="link-6">Test 6</h1>
+    <p>
+      Life does not stop and start at your convenience, you miserable piece of shit. Rhoncus at
+      volutpat felis blandit in libero turpis, laoreet et. I mean I had an M16, Jacko, not an Abrams
+      fucking tank. Molestie sed, volutpat et erat nulla ut orci quis neque consectetur tincidunt.
+      HERE'S WHAT HAPPENS, LARRY! Aliquam erat volutpat donec aliquam orci eget mi lobortis sed
+      tincidunt diam mattis. …and even if he's a lazy man, and the Dude was certainly that—quite
+      possibly the laziest in Los Angeles County. Fusce sem quam, ultricies sed convallis ac,
+      hendrerit eu urna curabitur.
+    </p>
+    <p>
+      <a href="#" id="scrollToTest">Scroll to top</a>
+    </p>
+    <p>
+      <a href="#" id="offsetTestTooFar">Scroll too far up (1000px above top of page)</a>
+    </p>
+    <p>
+      <a href="#" id="setAHash">Set a hash but don't scroll</a>
+    </p>
+    <script src="bundle.js"></script>
+  </body>
 </html>

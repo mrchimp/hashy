@@ -1,41 +1,52 @@
-# hashy.js #
+# hashy.js
 
 Smooth scroll to internal anchors when clicking "hash" links (e.g. href="#foobar").
 
 Offset scroll amount by the height of a given element including on page load - useful for sticky headers.
 
-Relies on jQuery because I haven't made it not. Pull requests are accepted.
+## Version 2
 
-## Installation ##
+* No longer requires jQuery
+* Dropped Bower support
+* Updated API
+* Removed UMD in favour of an ES2015 class
+* extra_offset has been inverted
 
-    bower install --save hashy
+## Installation
 
-    # or
+```bash
+npm install --save hashy-links
+```
 
-    npm install --save hashy-links
+## Basic Usage
 
+#### Html
 
-## Basic Usage ##
+```html
+<nav id="fixedHeader">This is my fix position nav bar</nav>
+<a href="#foo" class="smooth-scrolling-links">Click me</a>
+```
 
-**Notice that things work slightly different with Hashy v1.0.0+. Hashy is now an object, not a function.**
+#### JavaScript
 
-    index.html
-    ----------
-    <a href="#foo" class="smooth-scrolling-links">Click me</a>
+```javascript
+import Hashy from 'hashy-links';
 
+const hashy = new Hashy('.smooth-scroll-links', '#fixedHeader', 20);
 
-    main.js
-    -------
-    import Hashy from 'hashy-links';
-
-    Hashy.init('.smooth-scrolling-links', '#fixed-header');
+window.addEventListener('load', () => {
+  hashy.scrollToLocationHash();
+});
+```
 
 Marvelous.
 
 
-## Parameters ##
+## Parameters
 
-    Hashy.init(link_selector, offset_selector, extra_offset);
+```javascript
+const hashy = new Hashy(link_selector, offset_selector, extra_offset);
+```
 
 **link_selector**
 
@@ -54,19 +65,21 @@ This optional selector is for use with fixed menus that normally cover content w
 An optional number of pixels to offset the scroll by, in addition the distance calculated by `offset_selector`. Can be positive or negative. You could even make it really, *really* negative and it will just stop at the top of the page. I've got you covered, bud.
 
 
-## Advanced Usage ##
+## Advanced Usage
 
 There are also a couple of helper methods you can use if you like.
 
 
-### scrollToHash ###
+### scrollToHash
 
-    Hashy.scrollToHash(hash, quick, callback, extra_offset)
+```javascript
+hashy.scrollToHash(hash, quick, callback, extra_offset)
+```
 
 Smooth scroll to the given hash and update the address bar.
 
 
-#### Parameters ####
+#### Parameters
 
 **hash** - The selector to scroll to. e.g. `#somewhere`
 
@@ -77,17 +90,21 @@ Smooth scroll to the given hash and update the address bar.
 **extra_offset** - (optional) An additional pixel value to offset the scroll by
 
 
-### setHash ###
+### setHash
 
-    Hashy.setHash(#whatever);
+```javacript
+hashy.setHash(#whatever);
+```
 
-Update the address bar - *don't* scroll.
+Update the address bar without scrolling the page.
 
 
-## Dynamically Sized Content ##
+## Dynamically Sized Content
 
 If your content resizes when the page loads, you're going to want to call hashy after that is done, otherwise the offset calculations may be incorrect. Something like this might help:
 
-    $(window).load(function() {
-        Hashy.init('.smooth-scrolling-links', #fixed-header');
-    });
+```javascript
+window.addEventListener('load', () => {
+  Hashy.init('.smooth-scrolling-links', '#fixed-header');
+});
+```
