@@ -56,7 +56,7 @@ export default class Hashy {
    */
   scrollToLocationHash(quick, callback, extra_offset) {
     if (window.location.hash) {
-      this.scrollToHash(window.location.hash, true, callback, extra_offset);
+      this.scrollToHash(window.location.hash, quick, callback, extra_offset);
     }
   }
 
