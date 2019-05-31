@@ -54,7 +54,7 @@ This is a jQuery selector for links that you want to smooth scroll when clicked.
 
 When something with this selector is clicked hashy will look on the current page for an element with the given ID. If this element is not found, the default link's action will be used. This should allow external (not same page) links to be selected without causing problems except...
 
-> **Potential Issue** - If you are on `foo.html` and have a link to `bar.html#baz` but `#baz` also exists on the current page then your link will effectively be broken. This is an issue that needs to be fixed. You can avoid this problem by being careful which links to pick with your selector. For example, **you probably don't want to do `hashy('a')`**.
+> **Potential Issue** - If you are on `foo.html` and have a link to `bar.html#baz` but `#baz` also exists on the current page then your link will effectively be broken. This is an issue that needs to be fixed. You can, and should, avoid this problem by being careful which links to pick with your selector. For example, **you probably don't want to do `hashy('a')`**. Instead you might do something like `a[href*=#]:not([href=#])`.
 
 **offset_selector**
 
